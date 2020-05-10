@@ -1,38 +1,22 @@
 ---
 os: linux
-
 language: python
 services: docker
 
-#env:
-#  - distro: centos7
-#    init: /usr/lib/systemd/systemd
-#    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
- 
- env:
+env:
   global:
     - ROLE_NAME: apache
   matrix:
-    - MOLECULE_DISTRO: centos8
     - MOLECULE_DISTRO: centos7
-     
-# # Tell Travis to start Docker when it brings up an environment. 
-services:
-  - docker
- 
-before_install:
-# Pull container from Docker Hub.
-#  - 'docker pull geerlingguy/docker-${distro}-ansible:latest'
- 
+  
+
 install:
+  # Install test dependencies.
   - pip install molecule yamllint ansible-lint docker
 
 script:
-# Create a random file to store the container ID. 
-#  - container_id=$(mktemp)
+  # Run tests.
+  - molecule test
 
-  - molecule test 
-# Run container detached, with our role mounted inside.
-#  - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro ${run_opts} geerlingguy/docker-${distro}-ansible:latest "${init}" > "${container_id}"'
-  
-#  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml --syntax-check'
+#notifications:
+#  webhooks: https://galaxy.ansible.com/api/v1/notifications/
