@@ -10,7 +10,7 @@ If you are using SSL/TLS, you will need to provide your own certificate and key 
 
 If you are using Apache with PHP, I recommend using the `geerlingguy.php` role to install PHP, and you can either use mod_php (by adding the proper package, e.g. `libapache2-mod-php5` for Ubuntu, to `php_packages`), or by also using `geerlingguy.apache-php-fpm` to connect Apache to PHP via FPM. See that role's README for more info.
 
-## Role Variables
+## Role Variables 
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
