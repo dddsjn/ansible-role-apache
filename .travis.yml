@@ -1,6 +1,8 @@
 ---
 os: linux
 
+language: python
+
 env:
   - distro: centos7
     init: /usr/lib/systemd/systemd
